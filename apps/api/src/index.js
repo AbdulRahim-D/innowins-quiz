@@ -5,6 +5,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import { createServer } from "http";
 import { Server } from "socket.io";
+import { setIO } from './lib/socket.js';
 
 import authRoutes from './routes/auth.js';
 import projectRoutes from './routes/projects.js';
@@ -94,6 +95,7 @@ const io = new Server(httpServer, {
     credentials: true
   },
 });
+setIO(io);
 
 // Relaxed Helmet for OAuth redirects and development
 app.use(helmet({
