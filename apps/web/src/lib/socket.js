@@ -9,7 +9,7 @@ export const initiateSocket = (userId) => {
 
   socket = io(SOCKET_URL, {
     withCredentials: true,
-    transports: ["websocket", "polling"]
+    transports: ["websocket", "polling"],
   });
 
   console.log("🔌 Connecting to Socket.IO...");
@@ -34,7 +34,7 @@ export const disconnectSocket = () => {
 
 export const subscribeToNotifications = (callback) => {
   if (!socket) return;
-  
+
   socket.on("notification", (data) => {
     console.log("📩 New real-time notification received:", data);
     callback(data);
